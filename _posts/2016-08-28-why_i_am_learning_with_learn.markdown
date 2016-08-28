@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Why I am Learning with Learn"
-date:   2016-08-28 15:33:01 +0000
+date:   2016-08-28 11:33:01 -0400
 ---
 
-# Why I am Learning with Learn. Why am I interested in learning software development? This is a great question! I have done some HTML/CSS in the past and work with javascript (specifically Processing) for fun and art and a way to keep the mind active. This is my [http://www.openprocessing.org/user/13587] on Open Processing which is a site for displaying and sharing Processing pieces and code.
+Why am I interested in learning software development? This is a great question! I have done some HTML/CSS in the past and work with javascript (specifically Processing) for fun and art and a way to keep the mind active. This is my [http://www.openprocessing.org/user/13587] on Open Processing which is a site for displaying and sharing Processing pieces and code.
 
 <iframe width="528" height="580" scrolling="no" frameborder="0" src="http://www.openprocessing.org/sketch/158461/embed/?width=500&height=500&border=true"></iframe>
 
