@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "On Active Record "
-date:   2016-09-19 20:23:11 +0000
+date:   2016-09-19 16:23:11 -0400
 ---
 
 I thought it might be useful to write out some ideas about what Active Record is and what it does in light of my Sinatra assessment coming up. At it's some simple, it's a ruby library for working with databases that allows us to both read and write information. We can add, remove and change items in the database directly. Active Record uses Object Relational Mapping (ORM) to map elements of a table (columns) to the relevant object attributes. When we fire up a new database migration, Active Record adds the specified attributes automatically saving time/effort. We have a number of methods to work with in Active Record including a CRUD system (create, read, update, destroy). 
