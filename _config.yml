@@ -1,0 +1,21 @@
+# Site settings
+title: Peter's Learn Blog
+header-img: img/home-bg.png
+email: peter.jacobson@gmail.com
+copyright_name: PeteAJ
+description: > # this means to ignore newlines until "baseurl:"
+  Peter is Learning with Learn
+baseurl: "" # the subpath of your site, e.g. /blog
+twitter_username: PeteAJ
+github_username:  PeteAJ
+learn_profile: PeteAJ
+email_username: peter.jacobson@gmail.com
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
