@@ -4,7 +4,7 @@ title:  "On Active Record "
 date:   2016-09-19 16:23:11 -0400
 ---
 
-I thought it might be useful to write out some ideas about what Active Record is and what it does in light of my Sinatra assessment coming up. At it's some simple, it's a ruby library for working with databases that allows us to both read and write information. We can add, remove and change items in the database directly. Active Record uses Object Relational Mapping (ORM) to map elements of a table (columns) to the relevant object attributes. When we fire up a new database migration, Active Record adds the specified attributes automatically saving time/effort. We have a number of methods to work with in Active Record including a CRUD system (create, read, update, destroy). 
+I thought it might be useful to write out some ideas about what Active Record is and what it does in light of my Sinatra assessment coming up. At it's some simple, it's a ruby library for working with databases that allows us to both read and write information. We can add, remove and change items in the database directly. Active Record uses Object Relational Mapping (ORM) to map elements of a table (columns) to the relevant object attributes. When we fire up a new database migration, Active Record adds the specified attributes automatically saving time/effort. Active Record objects have both persistent data and behavior that operates on that data. We have a number of methods to work with in Active Record including a CRUD system (create, read, update, destroy). 
 
 I'm looking at this [page](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) here but I will help me to think through some of the Active Record basics. So this is mostly a copy of the page referenced that I felt was most relevant to my current project.   
 
@@ -65,10 +65,25 @@ User.find(user.id).preferences #=> {"color" => "blue", "second_color" => "green"
 
 Basic CRUD actions in Active Record are:
 
-Create: User.create 
+Create: User.create
+  create and save a new instance. .new instantiates an object without saving. .save commits to the database 
+	
 Read: User.all ot User.find_by(id_number)
+  accessing data. methods include all - return a collection of all users, first - return first user, .find_by - return by name,etc.   .where - users = User.where(name: 'David', occupation: 'Code Artist').order(created_at: :desc) - return all David/Code   Artists and sort by create_at reverse chronological order
+	
 Update: User.update
+   User.find_by, .name, .save becomes User.find_by, user.update so we write:
+	
+```
+	user = User.find_by(name: 'David')
+  user.update(name: 'Dave')
+```
+
+  We can also use .update_all to update multiple records.
+
 Delete: User.destroy  
+
+
 
 create: 
 get '/user/new' router renders the view page with form 
@@ -156,12 +171,32 @@ display the index.erb page on access. If we click on the link here to sign up as
 	
 Then I decided to redirect to the new book entry page because I think I do need a full CRUD views system to add the new member name and welcome them. But redirecting to the new book page works like this. I'm posting the information from the signup.erb to this new page. Not quite, but working on it.  
 
-  post '/registrations' do
+  ```
+post '/registrations' do
     
     redirect :'/new'
   end
+```
+
+We can also validate the state of a model before in gets put into the db.  In the relevant class: 
+
+`validates :name, presence: true `
 	
-	I plan to keep adding to this page as I work through this. Again, noting that some of its content is definitely derived from information and exampled on learn.co and elsewhere online.  
+And do callbacks which run whenever an Active Record object is created, saved, updated, deleted, validated, or loaded from the db. Most simply an ordinary method and a macro-style class method to register them as callbacks:
+
+```
+before_validation :ensure_login_has_a_value
+ 
+  protected
+    def ensure_login_has_a_value
+      if login.nil?
+        self.login = email unless email.blank?
+      end
+    end
+```
+		
+I plan to keep adding to this page as I work through this. Again, noting that some of its content is definitely derived from information and exampled on learn.co and elsewhere online.  
+
 	
 
 	
