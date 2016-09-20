@@ -45,6 +45,7 @@ user.name? #=> true
 
 
 Dynamic Attribute-based finders. We can use find_by to find an object by attribute or find_by to find by multiple attributes.  
+
 ```
 User.find_by(name: "Peter", occupation: "Designer")
 User.find_by_name_and_occupation("Peter, "Designer")
@@ -163,9 +164,9 @@ In my current project:
 	
 display the index.erb page on access. If we click on the link here to sign up as a new user we send a get request to /signup. My signup.erb is in views>registrations>signup.  
 
- ```
+```
  get '/signup' do
-    erb :'/registrations/signup'
+ erb :'/registrations/signup'
   end
 ```
 	
